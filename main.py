@@ -1,4 +1,3 @@
-# main.py
 from fastapi import FastAPI, Request ,HTTPException
 from fastapi.responses import JSONResponse
 import traceback
@@ -10,7 +9,7 @@ from collections import defaultdict
 import time
 from fastapi.middleware.cors import CORSMiddleware
 # Import models so SQLAlchemy registers them before create_all
-from app.models import user, book, borrow  # noqa: F401
+from app.models import user, book, borrow  
 
 # Routers
 from app.routers.auth import router as auth_router
@@ -37,16 +36,16 @@ app.add_middleware(
 Base.metadata.create_all(bind=engine)
 
 
-# ================= REGISTER ROUTERS =================
+#  REGISTER ROUTERS
 app.include_router(auth_router,  prefix="/auth",   tags=["Authentication"])
 app.include_router(users_router, prefix="/users",  tags=["Users"])
 app.include_router(books_router, prefix="/books",  tags=["Books"])
 app.include_router(admin_router, prefix="/admin",  tags=["Admin"])
-# ====================================================
 
 
 
-# ================= GLOBAL ERROR HANDLER =================
+
+#  GLOBAL ERROR HANDLER 
 @app.exception_handler(RequestValidationError)
 async def validation_exception_handler(request: Request, exc: RequestValidationError):
     logger.error(f"Validation Error: {exc.errors()}")
@@ -79,10 +78,9 @@ async def global_exception_handler(request: Request, exc: Exception):
     )
 
 
-# =======================================================
 
 
-# ================= MONITORING ENDPOINTS =================
+# MONITORING ENDPOINTS
 request_counts = defaultdict(int)
 error_counts = defaultdict(int)
 response_times = []
@@ -172,6 +170,6 @@ def system_info():
 def root():
     logger.info("Root endpoint accessed")
     return {
-        "message": "✅ Library Management System is running successfully!",
+        "message": "Library Management System is running successfully!",
         "documentation": "/docs"
     }

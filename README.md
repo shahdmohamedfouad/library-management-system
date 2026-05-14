@@ -1,28 +1,137 @@
-# Library Management System 
-A backend API built with FastAPI for managing a digital library system.
-The project allows users to browse books, borrow and return them, and track borrowing history, with secure authentication and role-based access control.
+#  Library Management System API
 
-🚀 Project Overview
+##  Backend Development with FastAPI
 
-This system provides a complete library management solution where users can interact with books efficiently while maintaining proper tracking and restrictions. It supports two types of users: Admin (Librarian) and Member, each with different permissions.
+---
 
-🧩 Key Features
-📖 CRUD operations for managing books
-🔄 Borrow and return system with availability validation
-🚫 Prevention of borrowing unavailable books
-📊 Tracking of borrowing history per user
-👥 Role-based access control:
-Admin: Manage books and view all records
-Member: Borrow, return, and view personal history
-🔐 Secure authentication using JWT
-⚡ Performance optimization using Redis caching
-🧪 API testing with pytest
-🛠️ Tech Stack
-FastAPI
-PostgreSQL / SQLite (depending on setup)
-Redis (Caching)
-JWT Authentication
-Pytest (Testing)
-📌 Project Goal
+##  Project Description
 
-The goal of this project is to demonstrate a scalable and well-structured backend system following modern software engineering practices, including RESTful API design, authentication, caching, logging, and testing.
+This project is a **Library Management System backend API** built using FastAPI.
+
+It provides functionality for managing books, user authentication, borrowing system, and tracking borrowing history with secure role-based access control.
+
+The project follows a clean, modular architecture using routers, services, models, and schemas.
+
+---
+
+##  Tech Stack
+
+- Python 3.10+
+- FastAPI
+- SQLAlchemy
+- Pydantic
+- JWT Authentication
+- Redis (Caching)
+- Pytest (Testing)
+- Uvicorn
+
+---
+
+app/
+│
+├── core/               # Configurations, DB, Security
+├── models/             # Database models (User, Book, BorrowRecord)
+├── schemas/            # Pydantic schemas
+├── routers/            # API endpoints
+├── services/           # Business logic layer
+├── utils/              # Logging, caching, helpers
+├── tests/              # Unit & integration tests
+│
+├── main.py             # Application entry point
+
+
+
+---
+
+##  Project Structure
+
+##  Features
+
+###  Book Management (CRUD)
+- Create book (Admin only)
+- Get all books
+- Get book by ID
+- Update book
+- Delete book (Admin only)
+
+---
+
+###  User Authentication
+- User registration
+- User login
+- JWT token generation
+- Token validation
+
+---
+
+###  Role-Based Authorization
+- Admin (Librarian)
+- Member (User)
+- Protected endpoints based on roles
+
+---
+
+###  Borrow System
+- Borrow books
+- Return books
+- Validate book availability
+- Prevent borrowing unavailable books
+- Limit number of borrowed books per user
+- Track borrowing history
+
+---
+
+##  Redis Caching
+
+- Cache frequently accessed data (GET all books / GET by ID)
+- Cache-Aside Pattern implemented
+- Cache invalidation on:
+  - Create
+  - Update
+  - Delete
+
+---
+
+##  Logging & Monitoring
+
+### Logging Features:
+- API request & response logging
+- Authentication logs
+- Error logging
+- Database operation logs
+
+### Log Levels:
+- DEBUG
+- INFO
+- WARNING
+- ERROR
+- CRITICAL
+
+---
+
+###  Monitoring Dashboard (Optional)
+
+Can be implemented using:
+- Prometheus + Grafana
+- ELK Stack
+- Custom FastAPI dashboard
+
+---
+
+##  Testing
+
+Implemented using pytest + FastAPI TestClient
+
+### Covered:
+- Authentication tests
+- Authorization tests
+- CRUD operations
+- Borrow system logic
+- Edge cases & validation
+
+Run tests:
+
+```bash
+pytest
+
+

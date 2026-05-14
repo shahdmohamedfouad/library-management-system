@@ -1,4 +1,4 @@
-# 📚 Library Management System
+#  Library Management System
 
 A fully-featured RESTful backend API for managing a library system, built with **FastAPI**, **PostgreSQL**, **Redis**, and **JWT Authentication**. Includes role-based access control, caching, structured logging, monitoring, and comprehensive testing.
 
@@ -15,67 +15,59 @@ The system enforces business rules such as preventing borrowing of unavailable b
 
 ---
 
-## 🗂️ Project Structure
+##  Project Structure
 
 ```
 library-management/
 ├── app/
-│   ├── main.py                  # FastAPI app entry point
-│   ├── config.py                # App configuration & environment variables
-│   ├── database.py              # Database connection setup
+│   ├── __init__.py
+│   ├── database.py              # PostgreSQL database connection (SQLAlchemy)
+│   ├── database_sqlite.py       # SQLite database connection (for testing)
+│   │
+│   ├── core/                    # App-wide configuration & security
+│   │   ├── config.py            # Environment variables & settings
+│   │   └── security.py          # JWT token creation & password hashing
+│   │
+│   ├── dependencies/            # FastAPI dependency injection
+│   │   ├── __init__.py
+│   │   └── auth.py              # Auth dependencies & role guards
 │   │
 │   ├── models/                  # SQLAlchemy ORM models
+│   │   ├── __init__.py
 │   │   ├── user.py
 │   │   ├── book.py
 │   │   └── borrow_record.py
 │   │
 │   ├── schemas/                 # Pydantic request/response schemas
-│   │   ├── user.py
-│   │   ├── book.py
-│   │   └── borrow_record.py
+│   │   ├── __init__.py
+│   │   ├── user_schema.py
+│   │   └── book_schema.py
 │   │
-│   ├── routes/                  # API route handlers
-│   │   ├── auth.py
-│   │   ├── users.py
-│   │   ├── books.py
-│   │   └── borrow.py
+│   ├── routers/                 # API route handlers
+│   │   ├── __init__.py
+│   │   ├── auth_router.py       # Register & login endpoints
+│   │   ├── book_router.py       # Book CRUD endpoints
+│   │   ├── admin.py             # Admin-only endpoints
+│   │   └── userprotected.py     # Member-only endpoints (borrow/return/history)
 │   │
-│   ├── services/                # Business logic layer
-│   │   ├── auth_service.py
-│   │   ├── book_service.py
-│   │   └── borrow_service.py
-│   │
-│   ├── core/                    # Auth utilities, dependencies
-│   │   ├── security.py          # JWT token creation & validation
-│   │   ├── dependencies.py      # FastAPI dependency injection
-│   │   └── roles.py             # Role-based access control
-│   │
-│   ├── cache/                   # Redis caching layer
-│   │   └── redis_client.py
-│   │
-│   └── logging/                 # Structured logging setup
-│       └── logger.py
+│   └── utils/                   # Utility modules
+│       ├── cache.py             # Redis caching (Cache-Aside pattern)
+│       └── log.py               # Structured logging setup
 │
-├── tests/                       # Pytest test suite
-│   ├── conftest.py
-│   ├── test_auth.py
-│   ├── test_books.py
-│   └── test_borrow.py
+├── tests/
+│   └── library_test.py          # Pytest test suite
 │
-├── monitoring/                  # Monitoring configuration
-│   ├── prometheus.yml
-│   └── grafana/
-│
+├── frontend/                    # Simple frontend (HTML/CSS/JS)
+├── main.py                      # FastAPI app entry point
 ├── docker-compose.yml
 ├── Dockerfile
-├── .env.example
 ├── requirements.txt
 └── README.md
 ```
 
 ---
 
-## 🧩 Entities
+##  Entities
 
 ### User
 | Field | Type | Description |
@@ -111,7 +103,7 @@ library-management/
 
 ---
 
-## 🚀 Features
+##  Features
 
 - **CRUD operations** for Books and Users
 - **Borrow & Return system** with real-time availability validation
@@ -127,7 +119,7 @@ library-management/
 
 ---
 
-## 🔐 Authentication & Authorization
+##  Authentication & Authorization
 
 ### Roles
 
@@ -342,7 +334,7 @@ The dashboard displays:
 
 ---
 
-## 🌿 Git Branching Strategy
+##  Git Branching Strategy
 
 ```
 main          → Stable, production-ready code

@@ -4,19 +4,6 @@ A fully-featured RESTful backend API for managing a library system, built with *
 
 ---
 
-## 👥 Team Members
-
-| Name | Role | GitHub |
-|------|------|--------|
-| Member 1 | Backend Lead / Auth & JWT | [@username1](https://github.com/username1) |
-| Member 2 | Books & Borrow Records API | [@username2](https://github.com/username2) |
-| Member 3 | Redis Caching & Performance | [@username3](https://github.com/username3) |
-| Member 4 | Logging, Monitoring & Testing | [@username4](https://github.com/username4) |
-
-> ✏️ *Replace the above with your actual team members and GitHub usernames.*
-
----
-
 ## 📖 Project Description
 
 This project is a backend API for a **Library Management System** that allows:

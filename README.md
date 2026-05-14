@@ -29,18 +29,15 @@ The project follows a clean, modular architecture using routers, services, model
 
 app/
 │
-├── core/               # Configurations, DB, Security
-├── models/             # Database models (User, Book, BorrowRecord)
-├── schemas/            # Pydantic schemas
-├── routers/            # API endpoints
-├── services/           # Business logic layer
-├── utils/              # Logging, caching, helpers
-├── tests/              # Unit & integration tests
+├── core/
+├── models/
+├── schemas/
+├── routers/
+├── services/
+├── utils/
+├── tests/
 │
-├── main.py             # Application entry point
-
-
-
+├── main.py
 ---
 
 ##  Project Structure

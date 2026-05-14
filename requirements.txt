@@ -1,0 +1,17 @@
+fastapi
+uvicorn
+sqlalchemy
+pydantic
+python-jose
+passlib[bcrypt]
+python-multipart
+python-dotenv
+pyodbc
+pydantic[email]
+uvicorn[standard]
+pydantic-settings
+python-jose[cryptography]
+redis
+loguru
+
+

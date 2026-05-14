@@ -1,5 +1,5 @@
 
-# app/models/borrow.py
+
 from sqlalchemy import Column, Integer, ForeignKey, DateTime, String
 from sqlalchemy.orm import relationship
 from datetime import datetime
@@ -16,7 +16,7 @@ class BorrowRecord(Base):
     return_date = Column(DateTime, nullable=True)
     status = Column(String(20), default="borrowed", nullable=False)  # borrowed / returned
 
-    # Relationships
+    
     user = relationship("User", back_populates="borrow_records")
     book = relationship("Book", back_populates="borrow_records")
 
